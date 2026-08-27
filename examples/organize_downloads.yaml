@@ -1,0 +1,11 @@
+# Watches ~/Downloads and sorts every new file into ~/Sorted/<extension>/,
+# then shows a desktop notification.
+- name: organize-downloads
+  trigger:
+    type: file_created
+    path: ~/Downloads
+  actions:
+    - type: move_by_extension
+      target: ~/Sorted
+    - type: notify
+      message: "Sorted a new file: {path}"

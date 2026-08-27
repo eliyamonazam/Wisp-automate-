@@ -1,0 +1,11 @@
+# Watches an invoices folder, logs every new file to a text log,
+# and pops a desktop notification.
+- name: notify-on-new-invoice
+  trigger:
+    type: file_created
+    path: ~/Documents/Invoices
+  actions:
+    - type: shell
+      command: "echo 'New invoice: {path}' >> ~/wisp.log"
+    - type: notify
+      message: "A new invoice arrived"
