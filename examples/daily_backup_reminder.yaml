@@ -1,0 +1,8 @@
+# Runs every day at 9:00 AM and reminds you to back up your project.
+- name: daily-backup-reminder
+  trigger:
+    type: schedule
+    cron: "0 9 * * *"
+  actions:
+    - type: notify
+      message: "Don't forget your daily backup!"

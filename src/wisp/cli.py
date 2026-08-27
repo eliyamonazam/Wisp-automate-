@@ -15,6 +15,7 @@ from rich.console import Console
 from rich.logging import RichHandler
 from rich.table import Table
 
+from . import registry
 from .config import load_config
 from .engine import Engine
 
@@ -23,6 +24,12 @@ app = typer.Typer(
     no_args_is_help=True,
 )
 console = Console()
+
+
+@app.callback()
+def _bootstrap() -> None:
+    """Discover any third-party plugins before running a command."""
+    registry.discover_plugins()
 
 
 def _setup_logging(verbose: bool) -> None:

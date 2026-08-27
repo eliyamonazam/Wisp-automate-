@@ -1,5 +1,7 @@
 # Wisp
 
+[![CI](https://github.com/eliyamonazam/Wisp-automate-/actions/workflows/ci.yml/badge.svg)](https://github.com/eliyamonazam/Wisp-automate-/actions/workflows/ci.yml)
+
 **Wisp** is a lightweight, extensible automation framework for your own machine — think "Zapier, but local and scriptable." Define pipelines in a small YAML file: when a **trigger** fires (a file appears, a schedule ticks), Wisp runs a chain of **actions** (move a file, run a command, send a notification).
 
 ```yaml
@@ -47,6 +49,7 @@ pip install -e ".[dev]"
 | Type | Options | Fires with |
 |---|---|---|
 | `file_created` | `path`, `recursive` (bool, default `false`) | `{"path": "<new file>"}` |
+| `schedule` | `cron` (5-field cron expression) **or** `interval_seconds` | `{}` (no `path` -- avoid `{path}` in actions) |
 
 ## Built-in actions
 
@@ -71,19 +74,29 @@ Each pipeline pairs one trigger with a list of actions. The `Engine` looks up th
 
 ## Extending Wisp
 
-Adding a new trigger or action is three steps:
+**Built-in triggers/actions** live in this repo: subclass `Trigger` (implement `start`, optionally `stop`) or `Action` (implement `run`), then register it in `src/wisp/registry.py` under a `type` string.
 
-1. Subclass `Trigger` (implement `start`, optionally `stop`) or `Action` (implement `run`).
-2. Register it in `src/wisp/registry.py` under a `type` string.
-3. Reference that `type` string from your YAML config.
+**Third-party triggers/actions** don't require touching this repo at all. Any installed package can register one via entry points in its own `pyproject.toml`:
+
+```toml
+[project.entry-points."wisp.triggers"]
+my_trigger = "my_package.triggers:MyTrigger"
+
+[project.entry-points."wisp.actions"]
+my_action = "my_package.actions:MyAction"
+```
+
+Once that package is installed alongside Wisp, `type: my_trigger` / `type: my_action` becomes usable from any YAML config -- Wisp discovers it automatically at startup (`registry.discover_plugins()`).
 
 ## Roadmap
 
-- [ ] Plugin discovery via `entry_points` (third-party packages can register triggers/actions without editing this repo)
-- [ ] Cron/schedule trigger (`APScheduler`)
+- [x] Plugin discovery via `entry_points`
+- [x] Cron/schedule trigger (`APScheduler`)
 - [ ] Webhook trigger (local HTTP listener)
 - [ ] Run history persisted to SQLite, viewable via `wisp logs`
 - [ ] Live status dashboard in the terminal (`rich`)
+
+The last three are intentionally left as future work rather than half-implemented -- see [Contributing](#development) if you'd like to tackle one.
 
 ## Development
 
