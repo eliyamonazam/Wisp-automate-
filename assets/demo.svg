@@ -1,0 +1,55 @@
+<svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wisp CLI demo">
+  <style>
+    text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; }
+    .title { fill: #8b949e; font-size: 12px; }
+    .prompt { fill: #58a6ff; }
+    .ok { fill: #3fb950; }
+    .info { fill: #d29922; }
+    .out { fill: #c9d1d9; }
+    .line { opacity: 0; }
+
+    @keyframes l1 { 0%,4%{opacity:0} 6%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l2 { 0%,11%{opacity:0} 13%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l3 { 0%,19%{opacity:0} 21%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l4 { 0%,26%{opacity:0} 28%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l5 { 0%,34%{opacity:0} 36%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l6 { 0%,44%{opacity:0} 46%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l7 { 0%,51%{opacity:0} 53%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l8 { 0%,61%{opacity:0} 63%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l9 { 0%,69%{opacity:0} 71%,90%{opacity:1} 95%,100%{opacity:0} }
+    @keyframes l10 { 0%,77%{opacity:0} 79%,90%{opacity:1} 95%,100%{opacity:0} }
+
+    .l1 { animation: l1 10s infinite; }
+    .l2 { animation: l2 10s infinite; }
+    .l3 { animation: l3 10s infinite; }
+    .l4 { animation: l4 10s infinite; }
+    .l5 { animation: l5 10s infinite; }
+    .l6 { animation: l6 10s infinite; }
+    .l7 { animation: l7 10s infinite; }
+    .l8 { animation: l8 10s infinite; }
+    .l9 { animation: l9 10s infinite; }
+    .l10 { animation: l10 10s infinite; }
+  </style>
+
+  <rect x="0.5" y="0.5" width="579" height="379" rx="10" fill="#0d1117" stroke="#30363d"/>
+  <path d="M10,0 H570 A10,10 0 0 1 580,10 V34 H0 V10 A10,10 0 0 1 10,0 Z" fill="#161b22"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="17" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="17" r="6" fill="#27c93f"/>
+  <text x="290" y="21" text-anchor="middle" class="title">wisp — bash</text>
+
+  <text x="20" y="65" class="line l1"><tspan class="prompt">$ </tspan><tspan class="out">wisp validate pipeline.yaml</tspan></text>
+  <text x="20" y="90" class="line l2 ok">✓ Config is valid — 1 pipeline(s) found.</text>
+
+  <text x="20" y="130" class="line l3"><tspan class="prompt">$ </tspan><tspan class="out">wisp run pipeline.yaml &amp;</tspan></text>
+  <text x="20" y="155" class="line l4 info">INFO  Wisp is running with 1 pipeline(s)</text>
+
+  <text x="20" y="195" class="line l5"><tspan class="prompt">$ </tspan><tspan class="out">echo "hello" &gt; inbox/report.pdf</tspan></text>
+  <text x="20" y="220" class="line l6 info">INFO  Pipeline 'organize-downloads' triggered</text>
+  <text x="20" y="245" class="line l7 out">[Wisp] Sorted a new file: inbox/report.pdf</text>
+
+  <text x="20" y="285" class="line l8"><tspan class="prompt">$ </tspan><tspan class="out">ls sorted/pdf/</tspan></text>
+  <text x="20" y="310" class="line l9 out">report.pdf</text>
+
+  <text x="20" y="350" class="line l10"><tspan class="prompt">$ </tspan><tspan class="out">▋</tspan></text>
+</svg>

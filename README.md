@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/eliyamonazam/Wisp-automate-/actions/workflows/ci.yml/badge.svg)](https://github.com/eliyamonazam/Wisp-automate-/actions/workflows/ci.yml)
 
+![Wisp CLI demo](assets/demo.svg)
+
 **Wisp** is a lightweight, extensible automation framework for your own machine — think "Zapier, but local and scriptable." Define pipelines in a small YAML file: when a **trigger** fires (a file appears, a schedule ticks), Wisp runs a chain of **actions** (move a file, run a command, send a notification).
 
 ```yaml
