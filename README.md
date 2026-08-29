@@ -25,6 +25,7 @@ wisp run examples/organize_downloads.yaml
 
 ## Why Wisp
 
+
 - **Declarative** — describe *what* should happen, not how to poll for it.
 - **Small core, easy to extend** — triggers and actions are just classes with one method each (`start` / `run`). Adding a new one doesn't touch the engine.
 - **No server, no account** — runs entirely on your machine, with a config file you own.
